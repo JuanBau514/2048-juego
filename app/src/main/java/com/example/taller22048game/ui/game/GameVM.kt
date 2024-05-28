@@ -27,6 +27,8 @@ class GameVM @Inject constructor(
         viewModelScope.launch {
             val savedGameState = gameRepository.getSavedGameState()
             gameEngine.init(savedGameState)
+            val savedGlobalState = gameRepository.getSavedGlobalState()
+            gameEngine.initGlobal(savedGlobalState)
             updateUiState()
         }
     }
@@ -66,6 +68,6 @@ class GameVM @Inject constructor(
     }
 
     private fun saveGameState() = viewModelScope.launch {
-        gameRepository.saveGameState(gameEngine.gameState)
+        gameRepository.saveGameState(gameEngine.gameState, gameEngine.globalState)
     }
 }

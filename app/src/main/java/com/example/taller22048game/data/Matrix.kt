@@ -1,13 +1,22 @@
 package com.example.taller22048game.data
 
 
-class Matrix constructor(
+data class Matrix(
     val base: MutableList<MutableList<Tile>>
 ) : MutableList<MutableList<Tile>> by base {
 
     companion object {
         fun emptyMatrix(size: Int = 4): Matrix {
             return Matrix(MutableList(size) { MutableList(size) { Tile.EMPTY } })
+        }
+
+        fun fromFirestore(data: List<List<Map<String, Any>>>): Matrix {
+            val base = data.map { row ->
+                row.map { col ->
+                    Tile(value = (col["value"] as Long).toInt()) // Asegúrate de convertir Long a Int si es necesario
+                }.toMutableList()
+            }.toMutableList()
+            return Matrix(base)
         }
     }
 
@@ -50,4 +59,13 @@ class Matrix constructor(
             }
         )
     }
+
+    fun toFirestore(): List<List<Map<String, Any>>> {
+        return this.map { row ->
+            row.map { tile ->
+                mapOf("value" to tile.value)
+            }
+        }
+    }
 }
+

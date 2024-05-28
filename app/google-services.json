@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "246644474220",
+    "project_id": "juego-fa663",
+    "storage_bucket": "juego-fa663.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:246644474220:android:d47c9ae40fd9916698f349",
+        "android_client_info": {
+          "package_name": "com.example.taller22048game"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC35LmDbuWknm0wJZ6R6WPP-ztOZznetxQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

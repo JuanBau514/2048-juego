@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.hilt.android)
     alias(libs.plugins.ksp)
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -68,6 +69,9 @@ dependencies {
 
     implementation(platform(libs.compose.bom))
     implementation(libs.bundles.compose)
+    implementation(libs.firebase.firestore.ktx)
+    implementation(libs.androidx.monitor)
+    implementation(libs.androidx.junit.ktx)
     debugImplementation(libs.bundles.composeDebug)
 
     // Data Store
@@ -82,4 +86,8 @@ dependencies {
     ksp(libs.bundles.hiltKsp)
 
     testImplementation(libs.junit)
+
+    //Firebase
+    implementation(platform(libs.firebase.bom.v3300))
+    implementation(libs.google.firebase.analytics)
 }

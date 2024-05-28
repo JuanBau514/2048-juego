@@ -2,6 +2,7 @@
 [versions]
 # Plugin Versions
 androidGradlePlugin = "8.4.1"
+firebaseBomVersion = "33.0.0"
 kotlin = "1.9.23"
 ksp = "1.9.23-1.0.19"
 googleServices = "4.4.1"
@@ -31,11 +32,16 @@ junit = "4.13.2"
 moshi = "1.14.0"
 retrofit = "2.10.0"
 room = "2.6.1"
+firebaseFirestoreKtx = "25.0.0"
+monitor = "1.6.1"
+junitKtx = "1.1.5"
 
 [libraries]
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "activityCompose" }
 androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "coreKtx" }
 datastore-prefs = { module = "androidx.datastore:datastore-preferences", version.ref = "datastorePrefs" }
+firebase-bom-v3300 = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBomVersion" }
+google-firebase-analytics = { module = "com.google.firebase:firebase-analytics" }
 lifecycle-runtime-ktx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "androidxLifecycle" }
 lifecycle-runtime-compose = { module = "androidx.lifecycle:lifecycle-runtime-compose", version.ref = "androidxLifecycle" }
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "daggerHilt" }
@@ -63,6 +69,9 @@ retrofit-serialization = { module = "com.squareup.retrofit2:converter-kotlinx-se
 room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
 room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
 room-ktx = { module = "androidx.room:room-ktx", version.ref = "room" }
+firebase-firestore-ktx = { group = "com.google.firebase", name = "firebase-firestore-ktx", version.ref = "firebaseFirestoreKtx" }
+androidx-monitor = { group = "androidx.test", name = "monitor", version.ref = "monitor" }
+androidx-junit-ktx = { group = "androidx.test.ext", name = "junit-ktx", version.ref = "junitKtx" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }

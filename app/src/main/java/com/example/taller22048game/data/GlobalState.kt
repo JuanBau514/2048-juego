@@ -5,8 +5,8 @@ import com.squareup.moshi.JsonClass
 
 @Keep
 @JsonClass(generateAdapter = true)
-data class GameState(
-    var board: Matrix,
-    var prevBoard: Matrix,
-    var score: Int
-)
+data class GlobalState(
+    var highScore: Int
+){
+    constructor() : this(0)
+}

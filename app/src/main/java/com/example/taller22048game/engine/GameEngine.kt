@@ -2,6 +2,7 @@ package com.example.taller22048game.engine
 
 import com.example.taller22048game.data.Direction
 import com.example.taller22048game.data.GameState
+import com.example.taller22048game.data.GlobalState
 import com.example.taller22048game.data.Matrix
 import com.example.taller22048game.data.Tile
 import javax.inject.Inject
@@ -9,14 +10,15 @@ import javax.inject.Inject
 class GameEngine @Inject constructor() {
 
     lateinit var gameState: GameState
+    lateinit var globalState: GlobalState
 
     var score: Int
         get() = gameState.score
         private set(value) { gameState.score = value }
 
     var highScore: Int
-        get() = gameState.highScore
-        private set(value) { gameState.highScore = value }
+        get() = globalState.highScore
+        private set(value) { globalState.highScore = value }
 
     var board: Matrix
         get() = gameState.board
@@ -33,10 +35,19 @@ class GameEngine @Inject constructor() {
             gameState = GameState(
                 board = Matrix.emptyMatrix(),
                 prevBoard = Matrix.emptyMatrix(),
-                score = 0,
-                highScore = 0
+                score = 0
             )
             resetBoard()
+        }
+    }
+
+    fun initGlobal(savedGlobalState: GlobalState?) {
+        if (savedGlobalState != null) {
+            globalState = savedGlobalState
+        } else {
+            globalState = GlobalState(
+                highScore = 0
+            )
         }
     }
 
