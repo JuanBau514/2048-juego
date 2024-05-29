@@ -59,13 +59,5 @@ data class Matrix(
             }
         )
     }
-
-    fun toFirestore(): List<List<Map<String, Any>>> {
-        return this.map { row ->
-            row.map { tile ->
-                mapOf("value" to tile.value)
-            }
-        }
-    }
 }
 

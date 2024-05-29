@@ -5,6 +5,7 @@ import com.example.taller22048game.data.GameState
 import com.example.taller22048game.data.GlobalState
 import com.example.taller22048game.data.Matrix
 import com.example.taller22048game.data.Tile
+import com.example.taller22048game.ui.game.isWin
 import javax.inject.Inject
 
 class GameEngine @Inject constructor() {
@@ -151,7 +152,10 @@ class GameEngine @Inject constructor() {
                 if (Tile.canCombine(row[col], row[col + 1])) {
                     row[col] = Tile.combine(row[col], row[col + 1])
                     row[col + 1] = Tile.EMPTY
-                    moveScore += row[col].value
+                    moveScore += row[col].value/2
+                    if(row[col].value==2048){
+                        isWin = true
+                    }
                     anyCombined = true
                 }
             }

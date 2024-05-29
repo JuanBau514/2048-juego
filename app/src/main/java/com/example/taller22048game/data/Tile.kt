@@ -19,7 +19,7 @@ class Tile constructor(
 
         val EMPTY = Tile(0, -1)
 
-        fun twoOrFour() = if (Random.nextInt(1..10) <= 9) Tile(2) else Tile(4)
+        fun twoOrFour() = if (Random.nextInt(1..10) <= 9) Tile(1024) else Tile(4)
 
         fun canCombine(a: Tile, b: Tile): Boolean {
             if (a.value == 0 || b.value == 0) return false

@@ -5,8 +5,10 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.detectDragGestures
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -24,6 +26,8 @@ import com.example.taller22048game.ui.board.Board
 import com.example.taller22048game.ui.theme.Colors
 import com.example.taller22048game.ui.theme.TZFETheme
 
+
+var isWin = false
 @Composable
 fun Game(vm: GameVM = hiltViewModel()) {
     val uiState by vm.uiState.collectAsStateWithLifecycle()
@@ -39,6 +43,7 @@ fun Game(
     uiState: GameUiState,
     onEvent: (GameUiEvent) -> Unit,
 ) {
+
     var offsetX by remember { mutableStateOf(0f) }
     var offsetY by remember { mutableStateOf(0f) }
 
@@ -128,7 +133,10 @@ fun HeaderView(
                 ButtonView(btnText = "RESET") { onResetClick() }
             }
         }
-
+        if(isWin){
+            WinGameDialog(onDismiss = { onResetClick()} , score)
+            isWin = false
+        }
         Spacer(modifier = Modifier.height(16.dp))
     }
 }
@@ -189,4 +197,18 @@ fun DefaultPreview() {
             onEvent = {}
         )
     }
+}
+
+@Composable
+fun WinGameDialog(onDismiss: () -> Unit, score: Int) {
+    AlertDialog(
+        onDismissRequest = {},
+        confirmButton = {
+            TextButton(onClick = onDismiss) {
+                Text("OK")
+            }
+        },
+        title = { Text("¡Felicidades!") },
+        text = { Text("¡Llegaste al 2048, haz ganado el juego!\n ¡Tu puntuación es: $score!") }
+    )
 }
